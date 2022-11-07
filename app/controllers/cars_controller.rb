@@ -23,6 +23,8 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
 
+    authorize @car
+
     respond_to do |format|
       if @car.save
         format.html { redirect_to car_url(@car), notice: "Car was successfully created." }
@@ -49,6 +51,8 @@ class CarsController < ApplicationController
 
   # DELETE /cars/1 or /cars/1.json
   def destroy
+    authorize @car
+
     @car.destroy
 
     respond_to do |format|
