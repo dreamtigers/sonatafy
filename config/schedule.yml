@@ -1,0 +1,4 @@
+depreciate_cars:
+    cron: "@monthly"
+    class: "DepreciateCarsJob"
+    queue: "depreciate_cars"
