@@ -1,27 +1,28 @@
 require 'spec_helper'
 
 RSpec.describe CarPolicy, type: :policy do
-  let(:user) { User.new }
+  let(:user) { User.new(role: 'user') }
+  let(:admin) { User.new(role: 'admin') }
 
   subject { described_class }
 
-  permissions ".scope" do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
   permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+    it "denies access if user is not admin" do
+      expect(subject).not_to permit(user, Car.new)
+    end
 
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it "allows access if user is admin" do
+      expect(subject).to permit(admin, Car.new)
+    end
   end
 
   permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it "denies access if user is not admin" do
+      expect(subject).not_to permit(user, Car.new)
+    end
+
+    it "allows access if user is admin" do
+      expect(subject).to permit(admin, Car.new)
+    end
   end
 end
