@@ -21,20 +21,4 @@ User.create!(
   password_confirmation: 'qwer1234'
 )
 
-Car.create!(
-  name: 'Porsche',
-  price: '5000',
-  state: 'new'
-)
-
-Car.create!(
-  name: 'Ferrari',
-  price: '1000',
-  state: 'used'
-)
-
-Dealership.create!(name: 'Colombia')
-Dealership.create!(name: 'Mexico')
-
-Car.first.dealerships << Dealership.first
-Car.second.dealerships << Dealership.second
+FactoryBot.create_list :dealership, rand(20), :with_cars

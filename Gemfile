@@ -60,6 +60,12 @@ group :development, :test do
 
   # Better testing suite
   gem 'rspec-rails', '~> 6.0.0'
+
+  # Fixtures
+  gem "factory_bot_rails", "~> 6.2"
+
+  # Real fake data
+  gem "faker", "~> 3.0"
 end
 
 group :development do
