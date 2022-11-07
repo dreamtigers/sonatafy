@@ -1,24 +1,72 @@
-# README
+# Sonatafy challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## System dependencies
 
-Things you may want to cover:
+- Ruby 2.7.6
+- PostgreSQL 12.4
+- Redis 5
 
-* Ruby version
+## Configuration
 
-* System dependencies
+Use `rbenv`. See https://github.com/rbenv/rbenv
 
-* Configuration
+## Installing
 
-* Database creation
+```sh
+# Clone the repo
+git clone <this repo>
 
-* Database initialization
+# Install the gems
+bundle install
 
-* How to run the test suite
+# Create and seed the DB
+rails db:setup
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Database creation
 
-* Deployment instructions
+```sh
+sudo -u postgres createuser <DATABASE_USER>
+sudo -u postgres createdb sonatafy_development --owner=<DATABASE_USER>
+sudo -u postgres psql
+```
 
-* ...
+Then in the Postgres CLI:
+
+```sql
+ALTER USER <DATABASE_USER> WITH PASSWORD <DATABASE_USER_PASSWORD>;
+ALTER USER <DATABASE_USER> CREATEDB;
+```
+
+And finally:
+
+```sh
+rails db:create
+```
+
+### Database initialization
+
+```sh
+rails db:setup
+```
+
+## Running in local
+
+```sh
+# Start the dev server
+rails s
+```
+
+## Services
+
+```sh
+# Start sidekiq
+bundle exec sidekiq
+```
+
+## Test suite
+
+```sh
+# Run tests
+bundle exec rspec
+```
