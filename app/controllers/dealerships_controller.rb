@@ -65,6 +65,6 @@ class DealershipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dealership_params
-      params.require(:dealership).permit(:name)
+      params.require(:dealership).permit(:name, car_ids: [])
     end
 end

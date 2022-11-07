@@ -23,7 +23,12 @@
 
   <div>
     <%= form.label :state, style: "display: block" %>
-    <%= form.number_field :state %>
+    <%= form.select :state, Car.states.keys, { } %>
+  </div>
+
+  <div>
+    <%= form.label :dealerships, style: "display: block" %>
+    <%= form.select :dealership_ids, Dealership.all.pluck(:name, :id), {}, { multiple: true } %>
   </div>
 
   <div>

@@ -17,6 +17,11 @@
   </div>
 
   <div>
+    <%= form.label :cars, style: "display: block" %>
+    <%= form.select :car_ids, Car.all.pluck(:name, :id), {}, { multiple: true } %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

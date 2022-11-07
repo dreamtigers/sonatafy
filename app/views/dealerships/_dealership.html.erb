@@ -4,4 +4,13 @@
     <%= dealership.name %>
   </p>
 
+  <p>
+    <strong>Cars:</strong>
+    <ul>
+    <% dealership.cars.each do |c| %>
+      <li><%= c.name %> - <%= c.price %></li>
+    <% end %>
+    </ul>
+  </p>
+
 </div>

@@ -14,4 +14,13 @@
     <%= car.state %>
   </p>
 
+  <p>
+    <strong>Dealerships:</strong>
+    <ul>
+    <% car.dealerships.each do |d| %>
+      <li><%= d.name %></li>
+    <% end %>
+    </ul>
+  </p>
+
 </div>
