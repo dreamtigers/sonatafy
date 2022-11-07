@@ -7,8 +7,8 @@
   <p>
     <strong>Cars:</strong>
     <ul>
-    <% dealership.cars.each do |c| %>
-      <li><%= c.name %> - <%= c.price %></li>
+    <% dealership.cars.order(:name).each do |c| %>
+      <li><%= link_to c.name, c %> - <%= c.price %> - <%= c.state %></li>
     <% end %>
     </ul>
   </p>

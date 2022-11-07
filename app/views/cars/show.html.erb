@@ -3,8 +3,14 @@
 <%= render @car %>
 
 <div>
-  <%= link_to "Edit this car", edit_car_path(@car) %> |
-  <%= link_to "Back to cars", cars_path %>
+  <p>
+    <% if current_user.admin? %>
+      <%= link_to "Edit this car", edit_car_path(@car) %>
+    <% end %>
+    <%# I left this button outside the guard so the tester can see the flash
+      message "Not Authorized" if logged in with a "user" role %>
+    <%= button_to "Destroy this car", @car, method: :delete %>
+  </p>
 
-  <%= button_to "Destroy this car", @car, method: :delete %>
+  <%= link_to "Back to cars", cars_path %>
 </div>

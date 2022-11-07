@@ -21,4 +21,13 @@ User.create!(
   password_confirmation: 'qwer1234'
 )
 
-FactoryBot.create_list :dealership, rand(20), :with_cars
+FactoryBot.create_list :car, rand(20)
+FactoryBot.create_list :dealership, rand(20)
+
+dealerships = Dealership.all
+cars = Car.all
+
+200.times.each do |i|
+  d = dealerships.sample
+  d.cars << cars.sample
+end

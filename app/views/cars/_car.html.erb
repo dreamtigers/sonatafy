@@ -17,8 +17,8 @@
   <p>
     <strong>Dealerships:</strong>
     <ul>
-    <% car.dealerships.each do |d| %>
-      <li><%= d.name %></li>
+    <% car.dealerships.each do |dealership| %>
+      <li><%= link_to dealership.name, dealership %></li>
     <% end %>
     </ul>
   </p>

@@ -3,8 +3,12 @@
 <%= render @dealership %>
 
 <div>
-  <%= link_to "Edit this dealership", edit_dealership_path(@dealership) %> |
-  <%= link_to "Back to dealerships", dealerships_path %>
+  <p>
+    <% if current_user.admin? %>
+      <%= link_to "Edit this dealership", edit_dealership_path(@dealership) %>
+      <%= button_to "Destroy this dealership", @dealership, method: :delete %>
+    <% end %>
+  </p>
 
-  <%= button_to "Destroy this dealership", @dealership, method: :delete %>
+  <%= link_to "Back to dealerships", dealerships_path %>
 </div>
